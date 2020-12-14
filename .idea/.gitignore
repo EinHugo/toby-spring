@@ -221,3 +221,6 @@ gradle-app.setting
 **/build/
 
 # End of https://www.toptal.com/developers/gitignore/api/java,java-web,macos,windows,intellij,maven,gradle
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
