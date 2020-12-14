@@ -3,7 +3,7 @@ package springbook.user.dao;
 import springbook.user.domain.User;
 import java.sql.*;
 
-public class UserDao {
+public abstract class UserDao {
     public void add(User user) throws ClassNotFoundException, SQLException {
         Connection c = getConnection();
 
@@ -40,11 +40,27 @@ public class UserDao {
         return user;
     }
 
-    private Connection getConnection() throws ClassNotFoundException, SQLException {
+    public abstract Connection getConnection() throws ClassNotFoundException, SQLException;
+
+}
+
+class NUserDao extends UserDao {
+    @Override
+    public Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection c = DriverManager.getConnection(
                 "jdbc:mysql:/springbook", "spring", "book");
         return c;
     }
-
 }
+
+class DUserDao extends UserDao {
+    @Override
+    public Connection getConnection() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection c = DriverManager.getConnection(
+                "jdbc:mysql:/springbook", "spring", "book");
+        return c;
+    }
+}
+
